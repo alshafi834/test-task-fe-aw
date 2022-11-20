@@ -6,7 +6,7 @@
         v-model="todoChecked"
         type="checkbox"
       />
-      <h5 class="card-title">{{ todo.title.substr(0, 20) }}</h5>
+      <h5 class="card-title">{{ todoTitle?.substr(0, 20) }}</h5>
     </div>
   </div>
 </template>
@@ -16,18 +16,14 @@ import { computed, defineComponent } from "vue";
 export default defineComponent({
   name: "TodoCard",
   props: {
-    todo: {
-      id: Number,
-      user_id: Number,
-      title: String,
-      due_on: Date,
-      status: String,
-    },
+    title: String,
+    status: String,
   },
   setup(props) {
-    const todoChecked = computed(() => props.todo.status === "completed");
+    const todoChecked = computed(() => props.status === "completed");
+    const todoTitle = computed(() => props.title);
 
-    return { todoChecked };
+    return { todoChecked, todoTitle };
   },
 });
 </script>

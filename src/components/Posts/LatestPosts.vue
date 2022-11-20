@@ -15,7 +15,7 @@
 <script lang="ts">
 import { onMounted, computed, defineComponent } from "vue";
 import { useStore } from "vuex";
-import { FETCH_POSTS } from "../../store/constants";
+import { FETCH_POSTS, LATEST_POSTS } from "../../store/constants";
 import { key } from "../../store";
 import { Post } from "../../api/types";
 import PostCard from "./PostCard.vue";
@@ -25,7 +25,7 @@ export default defineComponent({
   components: { PostCard },
   setup() {
     const store = useStore(key);
-    const latestPosts = computed((): Post[] => store.state.posts);
+    const latestPosts = computed((): Post[] => store.getters[LATEST_POSTS]);
 
     const fetchPosts = () => {
       store.dispatch(FETCH_POSTS);
