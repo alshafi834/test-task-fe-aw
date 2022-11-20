@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>My Dashboard</h2>
+  <div class="container mt-5">
+    <h2 class="text-center">My Dashboard</h2>
     <latest-posts />
   </div>
 </template>
