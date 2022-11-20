@@ -4,14 +4,15 @@ import { GlobalState } from "./types";
 
 const getters = {
   [LATEST_POSTS](state: GlobalState): Post[] {
-    console.log("latest posts");
     const latestPosts = state.posts.slice(0, 4);
     return latestPosts;
   },
 
   [TODOS_BY_ID](state: GlobalState): Todo[] {
-    const myUserId = 3021;
-    const myTodos = state.todos.filter((todo) => todo.user_id === myUserId);
+    const myUserId = state.todos[0];
+    const myTodos = state.todos.filter(
+      (todo) => todo.user_id === myUserId.user_id
+    );
     return myTodos;
   },
 };

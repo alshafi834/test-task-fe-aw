@@ -1,18 +1,24 @@
 <template>
-  <div class="card" style="width: 15rem; height: 170px">
-    <div class="card-body d-flex flex-row justify-content-around">
+  <div
+    class="card cards"
+    :class="[theme ? 'lightCard' : 'darkCard']"
+    style="width: 15rem; height: 170px"
+  >
+    <div class="card-body card-layout">
       <input
         style="width: 25px; height: 25px"
         v-model="todoChecked"
         type="checkbox"
       />
-      <h5 class="card-title">{{ todoTitle?.substr(0, 20) }}</h5>
+      <h6 class="card-title">{{ todoTitle?.substr(0, 20) }}</h6>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { key } from "@/store";
 import { computed, defineComponent } from "vue";
+import { useStore } from "vuex";
 export default defineComponent({
   name: "TodoCard",
   props: {
@@ -23,9 +29,31 @@ export default defineComponent({
     const todoChecked = computed(() => props.status === "completed");
     const todoTitle = computed(() => props.title);
 
-    return { todoChecked, todoTitle };
+    const store = useStore(key);
+    const theme = computed(() => store.state.darkTheme);
+
+    return { todoChecked, todoTitle, theme };
   },
 });
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.lightCard {
+  box-shadow: $shadow1;
+}
+.darkCard {
+  box-shadow: $shadow1;
+  background: rgb(61 61 61);
+}
+.card-layout {
+  display: flex;
+  align-content: center;
+  input {
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  h6 {
+    margin-top: 3px;
+  }
+}
+</style>

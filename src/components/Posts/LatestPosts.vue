@@ -1,14 +1,13 @@
 <template>
-  <div class="mt-4">
-    <h3 class="py-2">Latest Posts</h3>
+  <div class="section">
+    <h4>Latest Posts</h4>
 
-    <div class="container">
-      <div class="row gx-5 gy-5">
-        <div class="col" v-for="post in latestPosts" :key="post">
-          <post-card :post="post" />
-        </div>
+    <div v-if="latestPosts.length" class="row gx-5 gy-5">
+      <div class="col" v-for="post in latestPosts" :key="post">
+        <post-card :post="post" />
       </div>
     </div>
+    <div v-else>No recent post has been found!</div>
   </div>
 </template>
 
@@ -38,4 +37,12 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.section {
+  margin-top: 25px;
+
+  h4 {
+    padding: 4px 0 18px 0;
+  }
+}
+</style>

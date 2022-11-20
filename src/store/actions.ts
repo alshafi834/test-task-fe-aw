@@ -3,6 +3,8 @@ import {
   RECEIVE_POSTS,
   RECEIVE_TODOS,
   FETCH_TODOS,
+  TOOGLE_THEME,
+  TOOGLE_THEME_ACTION,
 } from "./constants";
 import getPosts from "../api/getPosts";
 import getTodos from "../api/getTodos";
@@ -20,6 +22,9 @@ const actions = {
   [FETCH_TODOS]: async (context: Context): Promise<void> => {
     const todos = await getTodos();
     context.commit(RECEIVE_TODOS, todos);
+  },
+  [TOOGLE_THEME_ACTION]: async (context: Context): Promise<void> => {
+    context.commit(TOOGLE_THEME);
   },
 };
 

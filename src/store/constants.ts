@@ -7,3 +7,7 @@ export const LATEST_POSTS = "LATEST_POSTS";
 export const RECEIVE_TODOS = "RECEIVE_TODOS";
 export const FETCH_TODOS = "FETCH_TODOS";
 export const TODOS_BY_ID = "TODOS_BY_ID";
+
+/* Theme */
+export const TOOGLE_THEME = "TOOGLE_THEME";
+export const TOOGLE_THEME_ACTION = "TOOGLE_THEME_ACTION";

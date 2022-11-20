@@ -4,6 +4,7 @@ const state = (): GlobalState => {
   return {
     posts: [],
     todos: [],
+    darkTheme: true,
   };
 };
 
