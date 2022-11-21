@@ -9,7 +9,7 @@ npm install
 ### Run the project
 
 ```
-npm run serve
+npm start
 ```
 
 ### Run with Docker

@@ -1,6 +1,7 @@
 FROM node:lts-alpine
 WORKDIR /app
 COPY package.json ./
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN  npm install
 EXPOSE 8080
 CMD ["npm", "run", "serve"]
